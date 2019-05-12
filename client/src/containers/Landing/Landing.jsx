@@ -23,12 +23,16 @@ class Landing extends React.Component {
 
     handleClickOpen = () => {
         this.setState({
-        open: true,
+            open: true,
+            selectedValue: ideas[Math.floor(Math.random() * ideas.length)]
         });
     };
 
     handleClose = value => {
-        this.setState({ selectedValue: value, open: false });
+        this.setState({ 
+            selectedValue: value, 
+            open: false 
+        });
     };
     
     render() {
