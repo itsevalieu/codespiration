@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import hero from './hero.jpg'
 
 const StyledLanding = styled.main`
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -17,13 +17,15 @@ const StyledLanding = styled.main`
 const ideas = ['todo', 'cats', 'stuff'];
 class Landing extends React.Component {
    state = {
-        open: false,
-        selectedValue: ideas[1]
+        ideas: [],
+        isLoaded: false,
+        selectedValue: ideas[1],
+        isOpen: false,
     };
 
     handleClickOpen = () => {
         this.setState({
-            open: true,
+            isOpen: true,
             selectedValue: ideas[Math.floor(Math.random() * ideas.length)]
         });
     };
@@ -31,7 +33,7 @@ class Landing extends React.Component {
     handleClose = value => {
         this.setState({ 
             selectedValue: value, 
-            open: false 
+            isOpen: false 
         });
     };
     
@@ -43,9 +45,9 @@ class Landing extends React.Component {
                 Well, Let's get pickin'!</Typography>
                 <Button variant='contained' color='primary' onClick={this.handleClickOpen}>Get Idea</Button>
                 <SimpleModalWrapped
-                selectedValue={this.state.selectedValue}
-                open={this.state.open}
-                onClose={this.handleClose} />
+                    selectedValue={this.state.selectedValue}
+                    open={this.state.isOpen}
+                    onClose={this.handleClose} />
             </StyledLanding>
         );
     } 
