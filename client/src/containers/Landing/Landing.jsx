@@ -46,7 +46,7 @@ class Landing extends React.Component {
             .catch(err=>console.log(err));
      }
     render() {
-        const {isLoaded, selectedValue} = this.state;
+        const {isLoaded, selectedValue, ideas} = this.state;
         if(isLoaded) {
             return (
                 <StyledLanding>
@@ -55,8 +55,10 @@ class Landing extends React.Component {
                     Well, Let's get pickin'!</Typography>
                     <Button variant='contained' color='primary' onClick={this.handleClickOpen}>Get Idea</Button>
                     <SimpleModalWrapped
+                        ideas={ideas}
                         selectedValue={selectedValue}
                         open={this.state.isOpen}
+                        handleClickOpen = {this.handleClickOpen}
                         onClose={this.handleClose} />
                 </StyledLanding>
             );

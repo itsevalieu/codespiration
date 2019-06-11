@@ -3,15 +3,22 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
+    modal: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     paper: {
         position: 'absolute',
         width: theme.spacing.unit * 50,
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing.unit * 4,
-        outline: 'none',
+        outline: 'none'
     },
 });
 
@@ -33,10 +40,12 @@ class SimpleModal extends React.Component {
                 aria-describedby="simple-modal-description"
                 onClose={this.handleClose}
                 {...other}
+                className={classes.modal}
             >
                 <div className={classes.paper}>
                     <Typography variant="h6" id="modal-title">{selectedValue.name}</Typography>
-                    <Typography variant="subtitle1" id="simple-modal-description">{ selectedValue.description}</Typography>
+                    <Typography variant="subtitle1" id="simple-modal-description">{selectedValue.description}</Typography>
+                    <Button variant='contained' color='primary' onClick={this.props.handleClickOpen}>New Idea</Button>
                 </div>
             </Modal>
         );
