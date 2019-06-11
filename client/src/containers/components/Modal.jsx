@@ -25,32 +25,28 @@ class SimpleModal extends React.Component {
     };
 
     render() {
-    const { classes, onClose, selectedValue, ...other } = this.props;
-    
-  
-      return (
-        <Modal
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-            onClose={this.handleClose}
-            {...other}
-        >
-            <div className={classes.paper}>
-                <Typography variant="h6" id="modal-title">{selectedValue}
-                </Typography>
-                <Typography variant="subtitle1" id="simple-modal-description">
-                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                </Typography>
-            </div>
-        </Modal>
-      );
+        const { classes, onClose, selectedValue, ...other } = this.props;
+        console.log(selectedValue);
+        return (
+            <Modal
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                onClose={this.handleClose}
+                {...other}
+            >
+                <div className={classes.paper}>
+                    <Typography variant="h6" id="modal-title">{selectedValue.name}</Typography>
+                    <Typography variant="subtitle1" id="simple-modal-description">{ selectedValue.description}</Typography>
+                </div>
+            </Modal>
+        );
     }
   }
   
   SimpleModal.propTypes = {
     classes: PropTypes.object.isRequired,
     onClose: PropTypes.func,
-    selectedValue: PropTypes.string,
+    selectedValue: PropTypes.object.isRequired,
   };
   
   // We need an intermediary variable for handling the recursive nesting.
