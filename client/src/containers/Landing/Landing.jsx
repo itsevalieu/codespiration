@@ -38,7 +38,7 @@ class Landing extends React.Component {
     };
     componentDidMount() {
         const url = 'https://api.github.com/search/repositories';
-        axios(`${url}?q=topic:react stars:>10000`)
+        axios(`${url}?q=topic:react stars:>5000`)
             .then(res => this.setState({
                 ideas: res.data.items,
                 isLoaded: true
@@ -50,10 +50,12 @@ class Landing extends React.Component {
         if(isLoaded) {
             return (
                 <StyledLanding>
-                    <Typography align='center' gutterBottom='true' variant="h3">Codespiration</Typography>
-                    <Typography align='center' gutterBottom='true' variant="h5">Need some inspiration for your next coding project?
-                    Well, Let's get pickin'!</Typography>
-                    <Button variant='contained' color='primary' onClick={this.handleClickOpen}>Get Idea</Button>
+                    <Typography align='center' gutterBottom='true' variant="h2">Codespiration</Typography>
+                    <br/>
+                    <Typography align='center' gutterBottom='true' variant="h4">Need some inspiration for your next coding project?</Typography>
+                    <Typography align='center' gutterBottom='true' variant="h4">Check out these awesome repos from Github!</Typography>
+                    <br/>
+                    <Button variant='contained' color='primary' size='large' onClick={this.handleClickOpen}>Get Idea</Button>
                     <SimpleModalWrapped
                         ideas={ideas}
                         selectedValue={selectedValue}

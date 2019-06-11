@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -14,12 +15,22 @@ const styles = theme => ({
     },
     paper: {
         position: 'absolute',
-        width: theme.spacing.unit * 50,
+        width: theme.spacing.unit * 75,
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing.unit * 4,
-        outline: 'none'
+        outline: 'none',
+        minHeight: '300px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
     },
+    modalButtons: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignContent: 'space-between'
+    }
 });
 
 class SimpleModal extends React.Component {
@@ -43,9 +54,14 @@ class SimpleModal extends React.Component {
                 className={classes.modal}
             >
                 <div className={classes.paper}>
-                    <Typography variant="h6" id="modal-title">{selectedValue.name}</Typography>
-                    <Typography variant="subtitle1" id="simple-modal-description">{selectedValue.description}</Typography>
-                    <Button variant='contained' color='primary' onClick={this.props.handleClickOpen}>New Idea</Button>
+                    <Typography variant="h4" id="modal-title">{selectedValue.name}</Typography>
+                    <br/>
+                    <Typography variant="h6" id="simple-modal-description">{selectedValue.description}</Typography>
+                    <br/>
+                    <div className={classes.modalButtons}>
+                        <Button variant='contained' color='primary' size='large' onClick={this.props.handleClickOpen}>New Idea</Button>
+                        <a target='_blank' href={selectedValue.html_url}><Button variant='contained' color='primary' size='large'>Github</Button></a>
+                    </div>
                 </div>
             </Modal>
         );
